@@ -6,7 +6,11 @@ Remember, that you need follow the provided link to create your own private copy
 [help on the course website](https://psuastro497.github.io/fall2022/resources/labs/) for instructions on getting setup to use ACI, cloning, commiting, pushing and submiting your work
 
 ## Exercise 1
-#### Goal:  
-Work through ex1.jl  (A Pluto notebook)
+### Goal:  Learn to work with Julia and Pluto
+- Work through ex1.jl  (a Pluto notebook)
+
+## Exercise 2
+### Goal:  Think about goals for the semester
+- Edit goals.md  (a [Markdown](https://guides.github.com/features/mastering-markdown/) file)
 
 
