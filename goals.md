@@ -1,6 +1,6 @@
 # Astro 497, Lab 1, Exercise 2
 
-## Goal: Reflect on your goals for the semester
+## Goal: Think about your goals for the semester
 
 ## Instructions
 - Open and edit the file named `goals.md` in your lab 1 repository.
