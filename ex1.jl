@@ -9,7 +9,6 @@ begin
 	using PlutoUI
 	using PlutoTest 
 	using PlutoTeachingTools
-	using HypertextLiteral
 end
 
 # ╔═╡ 5b826e17-ad51-43d0-9756-89a9fd0ea834
@@ -303,6 +302,9 @@ The above cell both loads the code from packages and brings the functions (and m
 # ╔═╡ 45efd82d-63e1-4016-838e-d0fbb21db99f
 md"The PlutoUI package provides several cool features, but for now we just use it to add the Table of Contents in the upper right corent."
 
+# ╔═╡ 73a3ce7e-9967-4d11-8ab7-0e0409190975
+TableOfContents()
+
 # ╔═╡ 60348e2d-9943-486c-9061-3c5c3bf88883
 md"The PlutoTest package provides an alternative `@test` macro for use in Pluto notebooks."
 
@@ -314,46 +316,14 @@ Foldable("Pro Tip:  Test vs PlutoTest",tip(md"Normally, we'd use the `Test` modu
 	
 However, inside Pluto, it can be helpful to instead import `PlutoTest`, since it displays the results particularly nicely.  (It's an external package and it's still experimental, so if things break in the future, then we can revert to just using `Test`."))
 
-# ╔═╡ 73a3ce7e-9967-4d11-8ab7-0e0409190975
-TableOfContents()
-
-# ╔═╡ 148adb47-cf5c-41ff-81e6-4a4f054a33b5
-"""
-Displays text on right hand side of Pluto notebook.
-Optional v_offset allows shifting up or down.
-"""
-function aside(x; v_offset=0)
-    @htl("""
-     <style>
-     @media (min-width: calc(700px + 30px + 300px)) {
-     	aside.plutoui-aside-wrapper {
-     		position: absolute;
-     		right: -11px;
-     		width: 0px;
-     	}
-     	aside.plutoui-aside-wrapper > div {
-     		width: 300px;
-     	}
-     }
-     </style>
-     <aside class="plutoui-aside-wrapper" style="top: $(v_offset)px">
-     	<div>
-     	$(x)
-     	</div>
-     </aside>
-     """)
-end
-
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
-HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 PlutoTeachingTools = "661c6b06-c737-4d37-b85c-46df65de6f69"
 PlutoTest = "cb4044da-4d16-4ffa-a6a3-8cad7f73ebdc"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
-HypertextLiteral = "~0.9.4"
 PlutoTeachingTools = "~0.1.0"
 PlutoTest = "~0.1.0"
 PlutoUI = "~0.7.9"
@@ -418,6 +388,12 @@ git-tree-sha1 = "335bfdceacc84c5cdf16aadc768aa5ddfc5383cc"
 uuid = "53c48c17-4a7d-5ca2-90c5-79b7896eea93"
 version = "0.8.4"
 
+[[deps.Formatting]]
+deps = ["Printf"]
+git-tree-sha1 = "8339d61043228fdd3eb658d86c926cb282ae72a8"
+uuid = "59287772-0a20-5a39-b81b-1366585eb4c0"
+version = "0.4.2"
+
 [[deps.Hyperscript]]
 deps = ["Test"]
 git-tree-sha1 = "8d511d5b81240fc8e6802386302675bdf47737b9"
@@ -457,6 +433,12 @@ git-tree-sha1 = "f2355693d6778a178ade15952b7ac47a4ff97996"
 uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 version = "1.3.0"
 
+[[deps.Latexify]]
+deps = ["Formatting", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "Printf", "Requires"]
+git-tree-sha1 = "1a43be956d433b5d0321197150c2f94e16c0aaa0"
+uuid = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
+version = "0.15.16"
+
 [[deps.LibCURL]]
 deps = ["LibCURL_jll", "MozillaCACerts_jll"]
 uuid = "b27032c2-a3e7-50c8-80cd-2d36dbcbfd21"
@@ -488,6 +470,12 @@ deps = ["JuliaInterpreter"]
 git-tree-sha1 = "dedbebe234e06e1ddad435f5c6f4b85cd8ce55f7"
 uuid = "6f1432cf-f94c-5a45-995e-cdbf5db27b0b"
 version = "2.2.2"
+
+[[deps.MacroTools]]
+deps = ["Markdown", "Random"]
+git-tree-sha1 = "3d3e902b31198a27340d0bf00d6ac452866021cf"
+uuid = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
+version = "0.5.9"
 
 [[deps.Markdown]]
 deps = ["Base64"]
@@ -538,10 +526,10 @@ uuid = "0ff47ea0-7a50-410d-8455-4348d5de0420"
 version = "0.1.5"
 
 [[deps.PlutoTeachingTools]]
-deps = ["HypertextLiteral", "LaTeXStrings", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
-git-tree-sha1 = "7aa8eef291dbb46aba4aab7fc3895d540a4725d8"
+deps = ["Downloads", "HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
+git-tree-sha1 = "67c917d383c783aeadd25babad6625b834294b30"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
-version = "0.1.5"
+version = "0.1.7"
 
 [[deps.PlutoTest]]
 deps = ["HypertextLiteral", "InteractiveUtils", "Markdown", "Test"]
@@ -703,10 +691,9 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╠═ab976d70-f59d-4dcd-ac89-771606a74108
 # ╟─b9f89dc4-a8e8-4afe-9da6-9880cfcf2a37
 # ╟─45efd82d-63e1-4016-838e-d0fbb21db99f
+# ╠═73a3ce7e-9967-4d11-8ab7-0e0409190975
 # ╟─60348e2d-9943-486c-9061-3c5c3bf88883
 # ╟─ceff74da-4cd2-4091-af1a-8ecde8e13700
 # ╟─98ecc733-15f3-4263-821a-483dadfc8ab8
-# ╠═73a3ce7e-9967-4d11-8ab7-0e0409190975
-# ╟─148adb47-cf5c-41ff-81e6-4a4f054a33b5
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
