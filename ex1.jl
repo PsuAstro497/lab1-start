@@ -284,7 +284,7 @@ md"Check that your function passes the tests above.  If not, then try to fix it.
 # ╔═╡ 68341392-aa5a-41b7-a76a-76db1c6357f5
 md"""Once you're happy with the results, it's time to save your notebook.  Look for the button in the upper right or `Ctrl`+'S'.  If it's not there, then your notebook has been autosaved.  
 
-Then read the [instructions for submitting assignments](http://localhost:8000/tips/labs/submitting/) for how to commit your changes to your local git repository and push them to github. 
+Then read the [instructions for submitting assignments](https://psuastro497.github.io/Fall2022/tips/labs/submitting/) for how to commit your changes to your local git repository and push them to github. 
     
 When you're done you can look into the `goals.md` file in your repository to begin the final exercise for Lab 1."""
 
